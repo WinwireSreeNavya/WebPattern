@@ -1,0 +1,23 @@
+name: Deploy Dev
+on:
+  workflow_dispatch:
+    inputs:
+      correlation_id:
+        description: 'Unique identifier value that is attached to workflow_dispatch request'
+        required: false
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  deploy-dev:
+    name: Deploy DEV
+    uses: ./.github/workflows/deploy-terraform.yml
+    with:
+      environment: dev
+      version: ${{ github.sha }}
+    secrets:
+      TFE_TOKEN: ${{ secrets.TFE_TOKEN }}

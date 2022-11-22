@@ -1,8 +1,8 @@
 terraform {
   cloud {
-    organization = "winwire"
+    organization = "wwsubba"
     workspaces {
-      name = "tfdeploy"
+      name = "terraformscripts"
     }
   }
 }

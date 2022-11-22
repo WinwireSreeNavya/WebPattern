@@ -21,3 +21,4 @@ jobs:
       version: ${{ github.sha }}
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+      

@@ -1,5 +1,5 @@
 terraform {
-  experiments = [module_variable_optional_attrs]
+  experiments = []
 }
 module "api-cloud-keyvault" {
   source = "./modules/cloud_keyvault"

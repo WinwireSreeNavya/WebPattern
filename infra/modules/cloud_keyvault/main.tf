@@ -1,5 +1,17 @@
+terraform {
+  required_version = ">= 1.0.0"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 2.0"
+    }
+  }
+
+}
 data "azuread_client_config" "current" {}
 
+provider "azurerm" {
+  features {
 resource "azurerm_key_vault" "kv1" {
   name                        = "test_ww1"
   location                    = "East US"
@@ -28,3 +40,4 @@ resource "azurerm_key_vault" "kv1" {
     ]
   }
 }
+  }

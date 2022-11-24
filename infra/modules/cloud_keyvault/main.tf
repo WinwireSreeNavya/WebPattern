@@ -6,13 +6,12 @@ terraform {
       version = ">= 2.0"
     }
   }
-
 }
 data "azuread_client_config" "current" {}
 
 provider "azurerm" {
   features {
-resource "azurerm_key_vault" "kv1" {
+  resource "azurerm_key_vault" "kv1" {
   name                        = "test_ww1"
   location                    = "East US"
   resource_group_name         = "WW-CloudServiceManagement-RG-TBDNov30"
@@ -39,5 +38,5 @@ resource "azurerm_key_vault" "kv1" {
       "Get",
     ]
   }
+ }
 }
-  }

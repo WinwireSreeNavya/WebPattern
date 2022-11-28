@@ -64,11 +64,6 @@ on:
       TFE_TOKEN:
         required: true
 
-on:
-  push:
-    branches: [ "develop" ]
-  pull_request:
-
 permissions:
   contents: read
 

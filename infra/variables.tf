@@ -1,10 +1,8 @@
-variable "environment" {
+variable "resource_group_name" {
   type        = string
-  description = "One of (dev, qa, prod)"
-  validation {
-    condition     = contains(["dev", "qa", "test", "prod"], var.environment)
-    error_message = "Unexpected environment."
-  }
-  default = "dev"
+  description = "base name of any resource"
 }
-
+variable "keyvault_name" {
+  type        = string
+  description = "name of key vault"
+}

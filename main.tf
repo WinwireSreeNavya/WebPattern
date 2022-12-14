@@ -26,7 +26,7 @@ resource "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_app_service" "example" {
-  name                = "example-app-service"
+  name                = "example-app-serviceCSM"
   location            = "East US"
   resource_group_name = "WW-CloudServiceManagement-RG-TBDNov30"
   app_service_plan_id = azurerm_app_service_plan.example.id

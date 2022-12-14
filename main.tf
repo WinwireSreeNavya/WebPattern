@@ -10,10 +10,10 @@ terraform {
 provider "azurerm" {
 
   version = "2.5.0"
-  client_id         = ${{ secrets.ARM_CLIENT_ID }}
-  client_secret     = ${{ secrets.ARM_CLIENT_SECRET }}
-  subscription_id   = ${{ secrets.ARM_SUBSCRIPTION_ID }}  
-  tenant_id         = ${{ secrets.ARM_TENANT_ID }}
+  client_id         = "$ARM_CLIENT_ID"
+  client_secret     = "$ARM_CLIENT_SECRET"
+  subscription_id   = "$ARM_SUBSCRIPTION_ID"  
+  tenant_id         = "$ARM_TENANT_ID"
   
   features {}
 }

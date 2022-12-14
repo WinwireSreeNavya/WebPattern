@@ -15,7 +15,7 @@ provider "azurerm" {
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "example" {
-  name     = "WW-CloudServiceManagement-RG-TBDNov30"
+  name     = "WW-CloudServiceManagement-Dec14"
   location = "East US"
 }
 

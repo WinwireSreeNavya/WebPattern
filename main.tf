@@ -7,15 +7,12 @@ terraform {
   }
 }
 
-provider "azurerm" { 
-  
-  client_id         = ARM_CLIENT_ID
-  client_secret     = ARM_CLIENT_SECRET
-  subscription_id   = ARM_SUBSCRIPTION_ID
-  tenant_id         = ARM_TENANT_ID
-  
+provider "azurerm" {  
+   
   features {}
 }
+
+data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "example" {
   name     = "WW-CloudServiceManagement-RG-TBDNov30"

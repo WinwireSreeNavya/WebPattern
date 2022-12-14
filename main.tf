@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-provider "azurerm" {  
+provider "azurerm" {
 
   version = "2.5.0"
   client_id         = ${{ secrets.ARM_CLIENT_ID }}

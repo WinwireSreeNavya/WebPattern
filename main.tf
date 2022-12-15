@@ -44,7 +44,7 @@ resource "azurerm_app_service" "example" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "examplestorageaccountnamecsm"
+  name                     = "examplestrgacctnamecsm"
   resource_group_name      = "WW-CloudServiceManagement-RG-TBDNov30"
   location                 = "East US"
   account_tier             = "Standard"
@@ -61,7 +61,7 @@ resource "azurerm_mssql_server" "example" {
 }
 
 resource "azurerm_mssql_database" "test" {
-  name           = "exampledbacctest-db-d"
+  name           = "exampledbtest-db-d"
   server_id      = azurerm_mssql_server.example.id
   collation      = "SQL_Latin1_General_CP1_CI_AS"
   license_type   = "LicenseIncluded"

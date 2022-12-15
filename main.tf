@@ -25,9 +25,47 @@ resource "azurerm_app_service_plan" "example" {
   }
 }
 
+resource "azurerm_application_insights" "ai" {
+  name                = "CloudService-ai"
+  location            = "${azurerm_resource_group.rg.location}"
+  resource_group_name = "${azurerm_resource_group.rg.name}"
+  application_type    = "web"  
+}
+
 resource "azurerm_app_service" "example" {
   name                = "example-app-serviceCSM"
   location            = "East US"
   resource_group_name = "WW-CloudServiceManagement-RG-TBDNov30"
   app_service_plan_id = azurerm_app_service_plan.example.id
+  
+  app_settings = {
+    APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.ai.instrumentation_key
+  }
+}
+
+resource "azurerm_storage_account" "example" {
+  name                     = "storageaccountnamecsm"
+  resource_group_name      = "WW-CloudServiceManagement-RG-TBDNov30"
+  location                 = "East US"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"  
+}
+
+resource "azurerm_mssql_server" "example" {
+  name                         = "example-sqlserver"
+  resource_group_name          = "WW-CloudServiceManagement-RG-TBDNov30"
+  location                     = "East US"
+  version                      = "12.0"
+  administrator_login          = "4dm1n157r470r"
+  administrator_login_password = "4-v3ry-53cr37-p455w0rd"
+}
+
+resource "azurerm_mssql_database" "test" {
+  name           = "acctest-db-d"
+  server_id      = azurerm_mssql_server.example.id
+  collation      = "SQL_Latin1_General_CP1_CI_AS"
+  license_type   = "LicenseIncluded"
+  max_size_gb    = 4
+  read_scale     = true
+  sku_name       = "S0"  
 }

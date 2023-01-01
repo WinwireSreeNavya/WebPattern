@@ -91,17 +91,3 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false -var-file='variables.tfvars.json'
-    
-    - name: Send email
-      uses: licenseware/send-email-notification@v1
-      with:
-          api-key: ${{ secrets.EMAIL_APIKEY }}
-          subject: Test Subject
-          from-email: no-reply@baker-taylor.com
-          to-email: sreenavya.kln@winwire.com
-          markdown-body: |
-            # My Markdown Title
-            This is a description
-            ## Another header
-            Another description
-      

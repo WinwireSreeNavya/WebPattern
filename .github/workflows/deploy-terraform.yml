@@ -96,30 +96,11 @@ jobs:
       uses: up9cloud/action-notify@master
       if: success() == true
       env:
-          CUSTOM_SCRIPT: |
-            echo custom script
-            read -r -d '' BODY <<- EOL || true
-            {
-              "attachments": [
-                {
-                  "color": "${GITHUB_JOB_STATUS_COLOR}",
-                  "blocks": [
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "#${GITHUB_RUN_NUMBER} $(cat "$GITHUB_EVENT_PATH" | jq -cr .commits[0].timestamp)"
-                      },
-                      "accessory": {
-                        "type": "image",
-                        "image_url": "https://avatars.githubusercontent.com/actions?s=48",
-                        "alt_text": "actions"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-            EOL
-            echo "$BODY"
-            curl -sSL -X POST -H "content-type: application/json" -d "${BODY}"   
+        action: "EMAIL Action"
+        type: "EMAIL"
+        title: "Deployed Successfully!"
+        from_name: "sreenavya.kln@winwire.com"
+        content: "<b>Deployment Success!</b>"
+        recipients: "sreenavya.kln@winwire.com"
+        send_as_html: true
+    

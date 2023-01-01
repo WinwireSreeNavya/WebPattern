@@ -93,30 +93,15 @@ jobs:
       run: terraform apply -auto-approve -input=false -var-file='variables.tfvars.json'
     
     - name: Send email
-      uses: dawidd6/action-send-mail@v3.7.1
+      uses: licenseware/send-email-notification@v1
       with:
-        server_address: smtp.gmail.com
-        # Server port, default 25:
-        server_port: 465
-        # Optional whether this connection use TLS (default is true if server_port is 465)
-        secure: true
-        # Optional (recommended): mail server username:
-        username: "sreenavya.kln@gmail.com"
-        # Optional (recommended) mail server password:
-        password: "Sairam@9547"
-        # Required mail subject:
-        subject: Github Actions job result
-        # Required recipients' addresses:
-        to: sreenavya.kln@winwire.com
-        # Required sender full name (address can be skipped):
-        from: sreenavya.kln@gmail.com
-        # Optional plain body:
-        body: Terraform Providion job of ${{github.repository}} completed successfully!
-        # Optional HTML body read from file:
-        html_body: "deployed successfully"
-        # Optional unsigned/invalid certificates allowance:
-        ignore_cert: true
-        # Optional converting Markdown to HTML (set content_type to text/html too):
-        convert_markdown: true
-        # Optional priority: 'high', 'normal' (default) or 'low'
-        priority: low     
+          api-key: "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"
+          subject: Test Subject
+          from-email: no-reply@baker-taylor.com
+          to-email: sreenavy.kln@winwire.com
+          markdown-body: |
+            # My Markdown Title
+            This is a description
+            ## Another header
+            Another description
+      

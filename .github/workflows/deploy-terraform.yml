@@ -91,16 +91,40 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false -var-file='variables.tfvars.json'
-
-    - name: notify
-      uses: up9cloud/action-notify@master
-      if: success() == true
-      env:
-        action: "EMAIL Action"
-        type: "EMAIL"
-        title: "Deployed Successfully!"
-        from_name: "sreenavya.kln@winwire.com"
-        content: "<b>Deployment Success!</b>"
-        recipients: "sreenavya.kln@winwire.com"
-        send_as_html: true
     
+    - name: Send mail
+  uses: dawidd6/action-send-mail@v3
+  with:
+    # Specify connection via URL (replaces server_address, server_port, secure,
+    # username and password)
+    #
+    # Format:
+    #
+    #  * smtp://user:password@server:port
+    #  * smtp+starttls://user:password@server:port
+    # Required mail server address if not connection_url:
+    server_address: smtp.gmail.com
+    # Server port, default 25:
+    server_port: 465
+    # Optional whether this connection use TLS (default is true if server_port is 465)
+    secure: true
+    # Optional (recommended): mail server username:
+    username: "sreenavya.kln@gmail.com"
+    # Optional (recommended) mail server password:
+    password: "Sairam@9547"
+    # Required mail subject:
+    subject: Github Actions job result
+    # Required recipients' addresses:
+    to: sreenavya.kln@winwire.com
+    # Required sender full name (address can be skipped):
+    from: sreenavya.kln@gmail.com
+    # Optional plain body:
+    body: Terraform Providion job of ${{github.repository}} completed successfully!
+    # Optional HTML body read from file:
+    html_body: "deployed successfully"
+    # Optional unsigned/invalid certificates allowance:
+    ignore_cert: true
+    # Optional converting Markdown to HTML (set content_type to text/html too):
+    convert_markdown: true
+    # Optional priority: 'high', 'normal' (default) or 'low'
+    priority: low  

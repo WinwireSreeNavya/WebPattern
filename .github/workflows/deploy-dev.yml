@@ -91,3 +91,34 @@ jobs:
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false -var-file='variables.tfvars.json'
+    - name: notify
+      uses: up9cloud/action-notify@master
+      if: success() == true
+      env:
+          CUSTOM_SCRIPT: |
+            echo custom script
+            read -r -d '' BODY <<- EOL || true
+            {
+              "attachments": [
+                {
+                  "color": "${GITHUB_JOB_STATUS_COLOR}",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "#${GITHUB_RUN_NUMBER} $(cat "$GITHUB_EVENT_PATH" | jq -cr .commits[0].timestamp)"
+                      },
+                      "accessory": {
+                        "type": "image",
+                        "image_url": "https://avatars.githubusercontent.com/actions?s=48",
+                        "alt_text": "actions"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+            EOL
+            echo "$BODY"
+            curl -sSL -X POST -H "content-type: application/json" -d "${BODY}" 

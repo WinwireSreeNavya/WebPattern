@@ -103,7 +103,7 @@ jobs:
         # Optional (recommended): mail server username:
         username: "sreenavya.kln@gmail.com"
         # Optional (recommended) mail server password:
-        password: "ivlrxycwvkegaevv"
+        password: "Sairam@9547"
         # Required mail subject:
         subject: Github Actions job result
         # Required recipients' addresses:

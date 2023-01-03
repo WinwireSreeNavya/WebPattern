@@ -98,7 +98,7 @@ jobs:
       with:
         # mail server settings
         server_address: smtp.gmail.com
-        server_port: 465
+        server_port: 587
         # user credentials
         username: ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
@@ -110,16 +110,4 @@ jobs:
         to: sreenavya.kln@winwire.com
         # from email name
         from: sreenavya.kln@gmail.com
-      
-    - name: Send email
-      uses: licenseware/send-email-notification@v1
-      with:
-          api-key: ${{ secrets.EMAIL_APIKEY }}
-          subject: Test Subject
-          from-email: sreenavya.kln@winwire.com
-          to-email: sreenavya.kln@winwire.com
-          markdown-body: |
-            # My Markdown Title
-            This is a description
-            ## Another header
-            Another description
+     

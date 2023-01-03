@@ -93,7 +93,7 @@ jobs:
       run: terraform apply -auto-approve -input=false -var-file='variables.tfvars.json'
       
     - name: Send mail
-      if: failure()
+      if: success()
       uses: dawidd6/action-send-mail@v2
       with:
         # mail server settings

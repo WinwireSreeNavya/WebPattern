@@ -95,11 +95,13 @@ jobs:
     - name: SendGrid Email
       uses: dawidd6/action-send-mail@v3.7.1
       with:
-        server_address: smtp.sendgrid.net
+        server_address: smtp.office365.com
         # Server port, default 25:
-        server_port: 465
+        server_port: 587
         # Optional whether this connection use TLS (default is true if server_port is 465)
         secure: true
+        username: sreenavya.kln@winwire.com
+        password: ${{ secrets.PWD_WW }}
         api-key: ${{ secrets.EMAIL_APIKEY }}
         # Required mail subject:
         subject: Github Actions job result

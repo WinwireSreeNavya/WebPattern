@@ -97,7 +97,7 @@ jobs:
       with:
         server_address: smtp.office365.com
         # Server port, default 25:
-        server_port: 465
+        server_port: 25
         # Optional whether this connection use TLS (default is true if server_port is 465)
         secure: true
         username: sreenavya.kln@winwire.com

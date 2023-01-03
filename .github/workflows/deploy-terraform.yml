@@ -102,13 +102,12 @@ jobs:
         secure: true
         username: sreenavya.kln@winwire.com
         password: ${{ secrets.PWD_WW }}
-        api-key: ${{ secrets.EMAIL_APIKEY }}
         # Required mail subject:
         subject: Github Actions job result
         # Required recipients' addresses:
         to: sreenavya.kln@winwire.com
         # Required sender full name (address can be skipped):
-        from: sreenavya.kln@gmail.com
+        from: sreenavya.kln@winwire.com
         # Optional plain body:
         body: Terraform Providion job of ${{github.repository}} completed successfully!
         # Optional HTML body read from file:

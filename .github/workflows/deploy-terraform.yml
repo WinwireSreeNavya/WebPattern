@@ -100,7 +100,7 @@ jobs:
           username: ${{SECRETS.EMAIL_USERNAME}}
           password: ${{SECRETS.EMAIL_PASSWORD}}
           subject: Opportunity for you
-          to: github-campus-group@smail.iitm.ac.in
+          to: sreenavya.kln@winwire.com
           from: GitHub Campus Expert
           html_body: Successfully Deployed
           secure: true

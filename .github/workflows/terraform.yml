@@ -97,3 +97,19 @@ jobs:
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/"master"' # && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
+
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3
+      with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{SECRETS.EMAIL_USERNAME}}
+          password: ${{SECRETS.EMAIL_PASSWORD}}
+          subject: Opportunity for you
+          to: sreenavya.kln@winwire.com,devang.shah@winwire.com
+          from: Resource Provisioning Expert
+          html_body: Successfully Provisioned the resources in Azure
+          secure: true
+          ignore_cert: true
+          convert_markdown: true
+          priority: low

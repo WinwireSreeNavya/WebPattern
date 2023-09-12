@@ -55,8 +55,8 @@ jobs:
   terraform:
     name: 'Terraform'
     env:
-      ARM_CLIENT_ID : "c4e1eec1-0bad-4f0b-8f46-1cb928bada6a"
-      ARM_CLIENT_SECRET : "Sjv8Q~Q_zHEnoDXULY4hZTD5gzMWh4dWeFsOfb.j"
+      ARM_CLIENT_ID : "122d94a3-7f0a-4d9a-ad18-90bec98fae76"
+      ARM_CLIENT_SECRET : "gtv8Q~cbQcL6Ru~CwJQGKs-eLQlA.~KoHxcLBdqG"
       ARM_SUBSCRIPTION_ID : "81ec4907-9db6-4d56-86d4-d997209d7be6"
       ARM_TENANT_ID : "bdcfaa46-3f69-4dfd-b3f7-c582bdfbb820"
     runs-on: ubuntu-latest

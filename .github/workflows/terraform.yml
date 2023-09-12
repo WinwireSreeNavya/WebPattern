@@ -55,10 +55,10 @@ jobs:
   terraform:
     name: 'Terraform'
     env:
-      ARM_CLIENT_ID : ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET : ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID : ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID : ${{ secrets.ARM_TENANT_ID }}
+      ARM_CLIENT_ID : "c4e1eec1-0bad-4f0b-8f46-1cb928bada6a"
+      ARM_CLIENT_SECRET : "Sjv8Q~Q_zHEnoDXULY4hZTD5gzMWh4dWeFsOfb.j"
+      ARM_SUBSCRIPTION_ID : "81ec4907-9db6-4d56-86d4-d997209d7be6"
+      ARM_TENANT_ID : "bdcfaa46-3f69-4dfd-b3f7-c582bdfbb820"
     runs-on: ubuntu-latest
     environment: production
     

@@ -17,7 +17,7 @@ data "azurerm_client_config" "current" {}
 resource "azurerm_app_service_plan" "example" {
   name                = "example-appserviceplan"
   location            = "East US"
-  resource_group_name = "WW-CloudServiceManagement-RG-TBDNov30"
+  resource_group_name = "WW-CloudServiceManagement-RG"
 
   sku {
     tier = "Basic"
@@ -28,14 +28,14 @@ resource "azurerm_app_service_plan" "example" {
 resource "azurerm_application_insights" "ai" {
   name                = "exampleCloudService-ai"
   location            = "East US"
-  resource_group_name = "WW-CloudServiceManagement-RG-TBDNov30"
+  resource_group_name = "WW-CloudServiceManagement-RG"
   application_type    = "web"  
 }
 
 resource "azurerm_app_service" "example" {
   name                = "example-app-serviceCSM"
   location            = "East US"
-  resource_group_name = "WW-CloudServiceManagement-RG-TBDNov30"
+  resource_group_name = "WW-CloudServiceManagement-RG"
   app_service_plan_id = azurerm_app_service_plan.example.id
   
   app_settings = {
@@ -45,7 +45,7 @@ resource "azurerm_app_service" "example" {
 
 resource "azurerm_storage_account" "example" {
   name                     = "examplestrgacctnamecsm"
-  resource_group_name      = "WW-CloudServiceManagement-RG-TBDNov30"
+  resource_group_name      = "WW-CloudServiceManagement-RG"
   location                 = "East US"
   account_tier             = "Standard"
   account_replication_type = "LRS"  
@@ -53,7 +53,7 @@ resource "azurerm_storage_account" "example" {
 
 resource "azurerm_mssql_server" "example" {
   name                         = "example-sqlservercsm"
-  resource_group_name          = "WW-CloudServiceManagement-RG-TBDNov30"
+  resource_group_name          = "WW-CloudServiceManagement-RG"
   location                     = "East US"
   version                      = "12.0"
   administrator_login          = "4dm1n157r470r"

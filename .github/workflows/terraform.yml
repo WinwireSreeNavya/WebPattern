@@ -82,7 +82,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init     
+      run: terraform init --vars-file=deploy.tfvars    
 
     # Checks that all Terraform configuration files adhere to a canonical format
     # - name: Terraform Format
@@ -90,13 +90,13 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: terraform plan --vars-file=deploy.tfvars
 
       # On push to "master", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       # if: github.ref == 'refs/heads/"master"' # && github.event_name == 'push'
-      run: terraform apply -auto-approve -input=false
+      run: terraform apply -auto-approve --vars-file=deploy.tfvars
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3

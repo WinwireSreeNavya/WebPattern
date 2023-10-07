@@ -18,14 +18,14 @@ resource "azurerm_resource_group" "resource_group" {
 }
 
 resource "azurerm_application_insights" "app_insights" {
-  name                = var.project_name
+  name                = "${var.project_name}-ai"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
   application_type    = "web"  
 }
 
 resource "azurerm_app_service_plan" "app_service_plan" {
-  name                = var.project_name
+  name                = "${var.project_name}-asp"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
 
@@ -36,7 +36,7 @@ resource "azurerm_app_service_plan" "app_service_plan" {
 }
 
 resource "azurerm_app_service" "web_app_service" {
-    name                = var.project_name
+    name                = "${var.project_name}-web-as"
     location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
     app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
@@ -47,7 +47,7 @@ resource "azurerm_app_service" "web_app_service" {
 }
 
 resource "azurerm_app_service" "api_app_service" {
-    name                = var.project_name
+    name                = "${var.project_name}-api-as"
  location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
     app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
@@ -58,7 +58,7 @@ resource "azurerm_app_service" "api_app_service" {
 }
 
 resource "azurerm_storage_account" "storage_account" {
-     name                        = var.project_name
+     name                        = "${var.project_name}ssa"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
     account_tier                 = "Standard"
@@ -66,7 +66,7 @@ resource "azurerm_storage_account" "storage_account" {
 }
 
 resource "azurerm_mssql_server" "database" {
-    name                         =  var.project_name
+    name                         =  "${var.project_name}-db"
  location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
     version                      = "12.0"

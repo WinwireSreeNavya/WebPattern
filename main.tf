@@ -14,7 +14,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "resource_group" {
   location = var.resource_group_location
-  name     = format("%s-%s-%s-rg", var.department_name, var.project_name, var.environment_name)
+  name     = "${var.department_name}-${var.project_name}-${var.environment_name}"
 }
 
 resource "azurerm_application_insights" "app_insights" {
